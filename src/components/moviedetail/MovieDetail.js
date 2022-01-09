@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const setVoteClass = (vote) => {
     if(vote >= 8){
@@ -12,10 +13,13 @@ const setVoteClass = (vote) => {
     }
 }
 
-const Movie = ({title, poster_path, overview, vote_average}) => {
+const MovieDetail = ({id,title, poster_path, overview, vote_average}) => {
     return (
         <div className="movie"> 
-            <img src={poster_path ? (IMG_API + poster_path) : "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW92aWV8ZW58MHx8MHx8&w=1000&q=80"} alt={title} />
+            <Link to={`/movie/${id}`}>
+
+                <img src={poster_path ? (IMG_API + poster_path) : "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW92aWV8ZW58MHx8MHx8&w=1000&q=80"} alt={title} />
+            </Link>
             <div className="movie-info">
                 <h3>{title}</h3>
                 <span className={`tag ${setVoteClass(vote_average)}`}>{vote_average}</span>
@@ -27,4 +31,4 @@ const Movie = ({title, poster_path, overview, vote_average}) => {
         </div>
     )
 }
-export default Movie;
+export default MovieDetail;
