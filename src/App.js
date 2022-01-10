@@ -8,7 +8,7 @@ function App() {
 	return (
 		<main>
 			<Routes>
-				<Route path="/" element={<Movie/>} exact />
+				<Route path="/ReactJSMovie" element={<Movie/>} exact />
 				<Route path="/movie/:id" element={<MovieDe/>} />
 			</Routes>
 		</main>
